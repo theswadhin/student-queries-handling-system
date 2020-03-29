@@ -1,0 +1,45 @@
+void student_Queue(int np) {
+ 
+    int count, arrival_Time, burst_Time, quantum_time;
+    struct process_Struct s_p[np];
+ 
+    for(count = 0; count < np; count++) {
+        printf("Enter the details of Process[%d]", count+1);
+        puts("");
+        printf("Process Name : ");
+        scanf("%s", s_p[count].process_name);
+ 
+        printf("Arrival Time : ");
+        scanf("%d", &s_p[count].arrival_time);
+ 
+        printf("Burst Time : ");
+        scanf("%d", &s_p[count].burst_time);
+    }
+    printf("Now, enter the quantum time for STUDENT queue : ");
+    scanf("%d", &quantum_time);
+ 
+ 
+    // sorting the processes by their ARRIVAL time.
+    // if the ARRIVAL time is same then scheduling is based on FCFS.
+    for(count = 0; count < np; count++) {
+        int x;
+		for(x = count +1; x < count; x++){
+            if(s_p[count].arrival_time > s_p[x].arrival_time) {
+                temp_Struct = s_p[count];
+                s_p[count] = s_p[x];
+                s_p[x] = temp_Struct;
+            }
+        }
+    }
+ 
+    // initialy all the burst time is remaining and completion of process is zero.
+    for(count = 0; count < np; count++) {
+        s_p[count].remaining = s_p[count].burst_time;
+        s_p[count].completion_time = 0;
+    }
+ 
+    int total_time, queue, round_robin[20];
+    total_time = 0;
+    queue = 0;
+    round_robin[queue] = 0;
+}
